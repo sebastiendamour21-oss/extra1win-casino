@@ -1,0 +1,19 @@
+EXTRA 1WIN — serveur central prototype
+
+Déploiement Render :
+- Créer un Web Service Node à partir du dépôt GitHub.
+- Build Command : npm install
+- Start Command : npm start
+- Ajouter DATABASE_URL avec l'Internal Database URL de PostgreSQL Render.
+- Ajouter INGEST_API_KEY avec une longue clé secrète.
+- PROMO_CODE=EXTRAWIN5
+- FREE_DAYS=7
+
+IMPORTANT :
+- Ce pack est un prototype statistique, pas un modèle d'IA entraîné.
+- Il n'est pas connecté automatiquement à 1win.
+- L'identifiant public ne donne pas accès aux sessions ni aux résultats privés du joueur.
+- Il faut une source de résultats officielle ou explicitement autorisée pour alimenter l'historique.
+- Les jeux restent aléatoires; aucune analyse ne garantit un gain.
+- Le forfait PostgreSQL gratuit Render expire après 30 jours selon les conditions affichées lors de sa création.
+- Avant une mise en production, ajouter une authentification administrateur robuste, des protections anti-abus, une validation des entrées et une politique de confidentialité.

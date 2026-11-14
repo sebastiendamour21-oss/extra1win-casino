@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: extra1win-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: INGEST_API_KEY
+        generateValue: true
+      - key: PROMO_CODE
+        value: EXTRAWIN5
+      - key: FREE_DAYS
+        value: "7"
