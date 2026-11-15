@@ -1,0 +1,8 @@
+name = "curly-firefly-cb6a"
+main = "index.js"
+compatibility_date = "2026-11-15"
+
+[[d1_databases]]
+binding = "Db"
+database_name = "extra1win-db"
+database_id = "d6696599-ddea-4b49-962e-a06a99b396bc"

@@ -1,19 +1,18 @@
-EXTRA 1WIN — serveur central prototype
+EXTRA 1WIN - Cloudflare Worker
 
-Déploiement Render :
-- Créer un Web Service Node à partir du dépôt GitHub.
-- Build Command : npm install
-- Start Command : npm start
-- Ajouter DATABASE_URL avec l'Internal Database URL de PostgreSQL Render.
-- Ajouter INGEST_API_KEY avec une longue clé secrète.
-- PROMO_CODE=EXTRAWIN5
-- FREE_DAYS=7
+Contenu :
+- src/index.js : code du Worker
+- wrangler.toml : configuration du Worker et liaison D1 Db
+- package.json : commande de déploiement
 
 IMPORTANT :
-- Ce pack est un prototype statistique, pas un modèle d'IA entraîné.
-- Il n'est pas connecté automatiquement à 1win.
-- L'identifiant public ne donne pas accès aux sessions ni aux résultats privés du joueur.
-- Il faut une source de résultats officielle ou explicitement autorisée pour alimenter l'historique.
-- Les jeux restent aléatoires; aucune analyse ne garantit un gain.
-- Le forfait PostgreSQL gratuit Render expire après 30 jours selon les conditions affichées lors de sa création.
-- Avant une mise en production, ajouter une authentification administrateur robuste, des protections anti-abus, une validation des entrées et une politique de confidentialité.
+1. La liaison D1 doit s'appeler exactement Db (D majuscule).
+2. Le code fournit une API d'inscription, d'analyse statistique descriptive,
+   de lecture des résultats et d'ingestion protégée.
+3. Aucun flux officiel 1win n'est connecté. Les résultats doivent être fournis
+   par une source autorisée. Les statistiques ne prédisent pas les résultats.
+4. Avant toute utilisation publique, il faudra configurer un secret
+   INGEST_API_KEY dans Cloudflare.
+5. Déploiement depuis un environnement compatible Node :
+   npm install
+   npm run deploy
