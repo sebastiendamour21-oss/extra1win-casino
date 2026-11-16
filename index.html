@@ -1,27 +1,109 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EXTRA 1WIN</title>
 <style>
-body{margin:0;background:#080d20;color:#eef3ff;font:16px Arial,sans-serif;padding:24px}
-main{max-width:680px;margin:auto}h1{color:#58d7ff}section{background:#121b36;border:1px solid #283b70;border-radius:14px;padding:18px;margin:16px 0}
-input,select,button{box-sizing:border-box;width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid #43578e;background:#0b1430;color:white}
-button{background:#176bce;font-weight:bold}small{color:#b9c8e8}.games{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-pre{white-space:pre-wrap;word-break:break-word}
-</style></head>
-<body><main>
-<h1>EXTRA 1WIN</h1><p>Tableau d'analyse statistique indépendant</p>
-<section><h2>Activer mon accès</h2>
-<input id="pid" placeholder="Ton identifiant public 1win">
-<input id="promo" placeholder="Code promo" value="EXTRAWIN5">
-<button onclick="register()">Activer</button><p id="regmsg"></p>
-<small>Ne saisis jamais ton mot de passe 1win ni tes codes de connexion.</small></section>
-<section><h2>Choisir un jeu</h2><select id="game">
-<option value="crash">Crash</option><option value="lucky-jet">Lucky Jet</option><option value="mines">Mines Classic</option><option value="aviator">Aviator</option></select>
-<button onclick="analyze()">Analyser l'historique reçu</button><pre id="result"></pre></section>
-<p><small>Les jeux de hasard restent aléatoires. Les statistiques décrivent les données passées et ne garantissent aucun gain. Aucune connexion automatique à 1win n'est activée.</small></p>
-</main><script>
-async function register(){let r=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({publicId:document.getElementById('pid').value,promo:document.getElementById('promo').value})});let j=await r.json();document.getElementById('regmsg').textContent=j.message||j.error||'Erreur';}
-async function analyze(){let r=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({game:document.getElementById('game').value,publicId:document.getElementById('pid').value})});let j=await r.json();document.getElementById('result').textContent=JSON.stringify(j,null,2);}
-</script></body></html>
+*{box-sizing:border-box}
+body{margin:0;background:#080d19;color:white;font-family:Arial,sans-serif;padding:20px}
+main{max-width:500px;margin:35px auto;background:#111b2e;padding:25px;border-radius:18px;border:1px solid #263b5c}
+h1{text-align:center;color:#20e6b5;font-size:30px}
+p{text-align:center;color:#b9c8dc}
+input,select,button{width:100%;padding:15px;margin-top:13px;border-radius:9px;font-size:16px}
+input,select{background:#081322;color:white;border:1px solid #38516f}
+button{background:#08c99c;color:#06131a;border:0;font-weight:bold}
+button:disabled{opacity:.5}
+.result{margin-top:15px;padding:12px;border-radius:8px;background:#081322;white-space:pre-wrap;overflow-wrap:anywhere}
+.note{font-size:12px;color:#9eacc0;line-height:1.5}
+</style>
+</head>
+<body>
+<main>
+<h1>EXTRA 1WIN</h1>
+<p>Tableau d'analyse statistique indépendant</p>
+
+<label>Identifiant public 1win</label>
+<input id="pid" placeholder="Entre ton identifiant public">
+
+<label>Code promo</label>
+<input id="promo" value="EXTRAWIN5">
+
+<button id="activate" onclick="register()">ACTIVER</button>
+<div id="regmsg" class="result">Entre ton identifiant et active ton accès.</div>
+
+<hr style="border-color:#263b5c;margin:25px 0">
+
+<label>Choisir un jeu</label>
+<select id="game">
+<option value="crash">Crash</option>
+<option value="luckyjet">Lucky Jet</option>
+<option value="mines">Mines Classic</option>
+<option value="aviator">Aviator</option>
+</select>
+
+<button id="analyse" onclick="analyze()">ANALYSER L'HISTORIQUE REÇU</button>
+<div id="analysis" class="result">Les résultats d'analyse apparaîtront ici.</div>
+
+<p class="note">
+EXTRA 1WIN est un outil statistique indépendant. Les jeux de hasard restent aléatoires. Les statistiques ne garantissent aucun gain et ne prédisent pas les prochains résultats.
+</p>
+</main>
+
+<script>
+const API="https://curly-firefly-cb6a.sebastiendamour21.workers.dev";
+
+async function request(path,data){
+ const response=await fetch(API+path,{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify(data)
+ });
+ const result=await response.json();
+ if(!response.ok) throw new Error(result.error||result.message||"Erreur du serveur");
+ return result;
+}
+
+async function register(){
+ const id=document.getElementById("pid").value.trim();
+ const promo=document.getElementById("promo").value.trim();
+ const msg=document.getElementById("regmsg");
+ const btn=document.getElementById("activate");
+
+ if(!id||!promo){msg.textContent="Entre ton identifiant et ton code promo.";return;}
+
+ btn.disabled=true;
+ msg.textContent="Connexion au serveur...";
+ try{
+  const data=await request("/api/register",{publicId:id,promo:promo});
+  msg.textContent=data.message||data.error||JSON.stringify(data);
+ }catch(e){
+  msg.textContent="Erreur : "+e.message;
+ }finally{
+  btn.disabled=false;
+ }
+}
+
+async function analyze(){
+ const id=document.getElementById("pid").value.trim();
+ const game=document.getElementById("game").value;
+ const msg=document.getElementById("analysis");
+ const btn=document.getElementById("analyse");
+
+ if(!id){msg.textContent="Entre d'abord ton identifiant public.";return;}
+
+ btn.disabled=true;
+ msg.textContent="Analyse en cours...";
+ try{
+  const data=await request("/api/analyze",{publicId:id,game:game});
+  msg.textContent=JSON.stringify(data,null,2);
+ }catch(e){
+  msg.textContent="Erreur : "+e.message;
+ }finally{
+  btn.disabled=false;
+ }
+}
+</script>
+</body>
+</html>
