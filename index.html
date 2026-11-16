@@ -76,7 +76,7 @@ async function register(){
  btn.disabled=true;
  msg.textContent="Connexion au serveur...";
  try{
-  const data=await request("/api/register",{publicId:id,promo:promo});
+  const data=await request("/api/register",{publicId:id,promoCode:promo});
   msg.textContent=data.message||data.error||JSON.stringify(data);
  }catch(e){
   msg.textContent="Erreur : "+e.message;
