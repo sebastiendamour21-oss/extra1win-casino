@@ -18,8 +18,7 @@
 body{
   margin:0;
   background:radial-gradient(ellipse at 50% 20%,#382008 0%,#100b06 45%,#050403 100%);
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
+  color:white;font-family:Arial,Helvetica,sans-serif;
 }
 button,input,select{font:inherit}
 button{cursor:pointer}
@@ -152,41 +151,27 @@ input,select{
 .big-number{font-size:38px;font-weight:1000;color:var(--gold)}
 .muted{font-size:12px;color:#bbb;line-height:1.6}
 .predictor{
-  color:#ffe18a;
-  font-size:17px;
-  font-weight:1000;
-  margin:12px 0;
-  text-shadow:0 0 10px #ffb00080;
+  color:#ffe18a;font-size:17px;font-weight:1000;
+  margin:12px 0;text-shadow:0 0 10px #ffb00080;
 }
 .motivation{
-  color:#fff0bd;
-  font-size:14px;
-  line-height:1.6;
-  margin-top:12px;
+  color:#fff0bd;font-size:14px;line-height:1.6;margin-top:12px;
 }
 
-/* ESPACE ANIME DES TROIS JEUX */
+/* ANIMATIONS CRASH, LUCKY JET ET AVIATOR */
 .flight-scene{
-  position:relative;
-  height:270px;
-  margin:18px 0;
-  overflow:hidden;
-  border:1px solid #a87927;
-  border-radius:16px;
+  position:relative;height:270px;margin:18px 0;overflow:hidden;
+  border:1px solid #a87927;border-radius:16px;
   background:
     radial-gradient(ellipse at 50% 90%,#16446c88,transparent 55%),
     linear-gradient(180deg,#050b20,#10274a 55%,#080b16);
   box-shadow:inset 0 0 35px #000,0 0 18px #e4a72c33;
 }
 .flight-scene.lucky{
-  background:
-    radial-gradient(ellipse at 50% 90%,#7220bb88,transparent 55%),
-    linear-gradient(180deg,#10051f,#32115b 55%,#090615);
+  background:radial-gradient(ellipse at 50% 90%,#7220bb88,transparent 55%),linear-gradient(180deg,#10051f,#32115b 55%,#090615);
 }
 .flight-scene.aviator{
-  background:
-    radial-gradient(ellipse at 50% 90%,#1768a088,transparent 55%),
-    linear-gradient(180deg,#030c1d,#123d69 55%,#080b16);
+  background:radial-gradient(ellipse at 50% 90%,#1768a088,transparent 55%),linear-gradient(180deg,#030c1d,#123d69 55%,#080b16);
 }
 .scene-stars{
   position:absolute;inset:0;
@@ -199,61 +184,35 @@ input,select{
   background-size:180px 130px;
   animation:starsMove 8s linear infinite;
 }
-@keyframes starsMove{
-  from{background-position:0 0}
-  to{background-position:180px 130px}
-}
+@keyframes starsMove{from{background-position:0 0}to{background-position:180px 130px}}
 .scene-cloud{
-  position:absolute;
-  width:130px;height:35px;
-  background:#b5c9e5;
-  opacity:.13;border-radius:50%;
-  filter:blur(12px);
+  position:absolute;width:130px;height:35px;background:#b5c9e5;
+  opacity:.13;border-radius:50%;filter:blur(12px);
   animation:cloudMove 9s linear infinite;
 }
 .scene-cloud.one{top:65px;left:-150px}
 .scene-cloud.two{top:165px;left:-180px;animation-delay:3s}
-@keyframes cloudMove{
-  from{transform:translateX(0)}
-  to{transform:translateX(650px)}
-}
+@keyframes cloudMove{from{transform:translateX(0)}to{transform:translateX(650px)}}
 .flight-track{
-  position:absolute;
-  width:120%;height:3px;
-  left:-10%;top:70%;
+  position:absolute;width:120%;height:3px;left:-10%;top:70%;
   transform:rotate(-17deg);
   background:linear-gradient(90deg,transparent,#ffcf49,#fff,transparent);
-  opacity:.45;
-  box-shadow:0 0 12px #ffc93b;
+  opacity:.45;box-shadow:0 0 12px #ffc93b;
 }
 .flight-object{
-  position:absolute;
-  left:8%;top:57%;
-  font-size:65px;
-  z-index:3;
-  filter:drop-shadow(0 0 13px #ffc43c);
-  transform:rotate(-15deg);
+  position:absolute;left:8%;top:57%;font-size:65px;z-index:3;
+  filter:drop-shadow(0 0 13px #ffc43c);transform:rotate(-15deg);
 }
-.flight-scene.lucky .flight-object{
-  font-size:58px;
-  transform:rotate(-40deg);
-}
-.flight-scene.aviator .flight-object{
-  font-size:65px;
-  transform:rotate(-12deg);
-}
-.flight-object.fly{
-  animation:flightPath 6s cubic-bezier(.2,.5,.3,1) forwards;
-}
+.flight-scene.lucky .flight-object{font-size:58px;transform:rotate(-40deg)}
+.flight-scene.aviator .flight-object{font-size:65px;transform:rotate(-12deg)}
+.flight-object.fly{animation:flightPath 6s cubic-bezier(.2,.5,.3,1) forwards}
 @keyframes flightPath{
   0%{left:7%;top:65%;transform:rotate(-12deg) scale(.8)}
   35%{left:35%;top:43%;transform:rotate(-20deg) scale(1)}
   70%{left:65%;top:24%;transform:rotate(-18deg) scale(1.08)}
   100%{left:85%;top:8%;transform:rotate(-22deg) scale(1.12)}
 }
-.flight-scene.lucky .flight-object.fly{
-  animation:rocketPath 6s cubic-bezier(.2,.5,.3,1) forwards;
-}
+.flight-scene.lucky .flight-object.fly{animation:rocketPath 6s cubic-bezier(.2,.5,.3,1) forwards}
 @keyframes rocketPath{
   0%{left:8%;top:70%;transform:rotate(-45deg) scale(.8)}
   35%{left:35%;top:48%;transform:rotate(-45deg) scale(1)}
@@ -261,86 +220,47 @@ input,select{
   100%{left:85%;top:5%;transform:rotate(-45deg) scale(1.15)}
 }
 .flight-trail{
-  position:absolute;
-  width:95px;height:5px;
-  left:0;top:0;
-  border-radius:50%;
-  background:linear-gradient(90deg,transparent,#ff9b26,#fff1a5);
-  filter:blur(3px);
-  opacity:0;
+  position:absolute;width:95px;height:5px;left:0;top:0;
+  border-radius:50%;background:linear-gradient(90deg,transparent,#ff9b26,#fff1a5);
+  filter:blur(3px);opacity:0;
 }
-.flight-object.fly .flight-trail{
-  opacity:1;
-  animation:trailPulse .3s infinite alternate;
-}
-@keyframes trailPulse{
-  from{filter:blur(2px);opacity:.55}
-  to{filter:blur(7px);opacity:1}
-}
+.flight-object.fly .flight-trail{opacity:1;animation:trailPulse .3s infinite alternate}
+@keyframes trailPulse{from{filter:blur(2px);opacity:.55}to{filter:blur(7px);opacity:1}}
 .scene-multiplier{
-  position:absolute;
-  top:17px;left:0;right:0;
-  text-align:center;
-  color:#ffe18a;
-  font-size:35px;font-weight:1000;
-  text-shadow:0 0 15px #ffad22;
-  z-index:4;
+  position:absolute;top:17px;left:0;right:0;text-align:center;
+  color:#ffe18a;font-size:35px;font-weight:1000;
+  text-shadow:0 0 15px #ffad22;z-index:4;
 }
 .scene-caption{
-  position:absolute;
-  bottom:12px;left:0;right:0;
-  text-align:center;
-  color:#d9e8ff;
-  font-size:12px;
-  letter-spacing:2px;
-  z-index:4;
+  position:absolute;bottom:12px;left:0;right:0;text-align:center;
+  color:#d9e8ff;font-size:12px;letter-spacing:2px;z-index:4;
 }
 .scene-explosion{
-  position:absolute;
-  width:25px;height:25px;
-  right:9%;top:8%;
-  border-radius:50%;
-  background:#ffbd35;
-  opacity:0;
-  z-index:5;
+  position:absolute;width:25px;height:25px;right:9%;top:8%;
+  border-radius:50%;background:#ffbd35;opacity:0;z-index:5;
   box-shadow:0 0 20px 15px #ff6b18;
 }
-.scene-explosion.burst{
-  animation:explosion .7s ease-out forwards;
-}
+.scene-explosion.burst{animation:explosion .7s ease-out forwards}
 @keyframes explosion{
   0%{opacity:1;transform:scale(.2)}
   60%{opacity:1;transform:scale(3)}
   100%{opacity:0;transform:scale(5)}
 }
-.animation-note{
-  color:#d6c49c;
-  text-align:center;
-  font-size:12px;
-  margin:8px 0 15px;
-}
+.animation-note{color:#d6c49c;text-align:center;font-size:12px;margin:8px 0 15px}
 
-/* MINES ANIMEES */
-.grid-mines{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:8px;margin-top:15px;
-}
+/* MINES CLASSIC */
+.grid-mines{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px}
 .cell{
-  aspect-ratio:1;border-radius:9px;
-  border:1px solid #d29b32;
+  aspect-ratio:1;border-radius:9px;border:1px solid #d29b32;
   background:linear-gradient(145deg,#302518,#120d08);
   color:var(--gold);font-size:24px;
   display:flex;justify-content:center;align-items:center;
-  box-shadow:inset 0 0 12px #000;
-  opacity:0;
+  box-shadow:inset 0 0 12px #000;opacity:0;
   transform:scale(.6) rotateY(90deg);
   animation:cellReveal .45s ease forwards;
   animation-delay:var(--delay,0s);
 }
-@keyframes cellReveal{
-  to{opacity:1;transform:scale(1) rotateY(0)}
-}
+@keyframes cellReveal{to{opacity:1;transform:scale(1) rotateY(0)}}
 .cell.diamond{
   background:radial-gradient(circle,#286d54,#102a21);
   box-shadow:0 0 14px #31ff9a55,inset 0 0 12px #000;
@@ -351,14 +271,8 @@ input,select{
   from{filter:brightness(.85)}
   to{filter:brightness(1.45);box-shadow:0 0 18px #31ff9a99}
 }
-.cell.mine{
-  background:radial-gradient(circle,#77251a,#2a0c08);
-  box-shadow:0 0 15px #ff352b66;
-}
-.mine-heading{
-  text-align:center;color:#ffe18b;
-  font-weight:bold;margin:12px 0;
-}
+.cell.mine{background:radial-gradient(circle,#77251a,#2a0c08);box-shadow:0 0 15px #ff352b66}
+.mine-heading{text-align:center;color:#ffe18b;font-weight:bold;margin:12px 0}
 .whatsapp-contact{
   position:fixed;right:15px;bottom:18px;z-index:9999;
   display:flex;align-items:center;gap:9px;padding:12px 17px;
@@ -481,8 +395,7 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
         <div class="flight-track"></div>
         <div id="visualMultiplier" class="scene-multiplier">1.00x</div>
         <div id="flightObject" class="flight-object">
-          ✈️
-          <span class="flight-trail"></span>
+          ✈️<span class="flight-trail"></span>
         </div>
         <div id="sceneExplosion" class="scene-explosion"></div>
         <div id="sceneCaption" class="scene-caption">PRÊT AU DÉCOLLAGE</div>
@@ -507,9 +420,10 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
         <option value="7">7 mines</option>
         <option value="10">10 mines</option>
       </select>
-      <button class="gold full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
+      <button id="minesGenerateButton" class="gold full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
       <div id="mineHeading" class="mine-heading"></div>
       <div id="mineGrid" class="grid-mines"></div>
+      <div id="minesCooldownStatus" class="status"></div>
     </div>
   </div>
 </section>
@@ -557,11 +471,13 @@ function openGame(game){
     game==="mines-classic"?"Grille de simulation":"Prédiction";
   document.getElementById("signalResult").innerHTML="";
   document.getElementById("cooldownStatus").textContent="";
+  document.getElementById("minesCooldownStatus").textContent="";
 
   const mines=game==="mines-classic";
   document.getElementById("normalGame").style.display=mines?"none":"block";
   document.getElementById("minesGame").style.display=mines?"block":"none";
 
+  updateCooldownDisplay();
   resetFlightScene(game);
 }
 
@@ -750,34 +666,57 @@ async function generateSignal(){
   }
 }
 
+/* DÉLAI COMMUN DE 20 SECONDES POUR LES QUATRE JEUX */
+function updateCooldownDisplay(){
+  const normalButton=document.getElementById("generateButton");
+  const minesButton=document.getElementById("minesGenerateButton");
+  const normalStatus=document.getElementById("cooldownStatus");
+  const minesStatus=document.getElementById("minesCooldownStatus");
+
+  if(cooldown>0){
+    normalButton.disabled=true;
+    minesButton.disabled=true;
+    normalButton.textContent="PATIENTEZ...";
+    minesButton.textContent="PATIENTEZ...";
+    const message="Nouvelle génération possible dans "+cooldown+" seconde(s).";
+    normalStatus.textContent=currentGame==="mines-classic"?"":message;
+    minesStatus.textContent=currentGame==="mines-classic"?message:"";
+  }else{
+    normalButton.disabled=false;
+    minesButton.disabled=false;
+    normalButton.textContent="GÉNÉRER UN SIGNAL";
+    minesButton.textContent="GÉNÉRER LA GRILLE";
+    normalStatus.textContent="";
+    minesStatus.textContent="";
+  }
+}
+
 function startCooldown(){
-  cooldown=59;
-  const button=document.getElementById("generateButton");
-  const status=document.getElementById("cooldownStatus");
+  cooldown=20;
 
-  button.disabled=true;
-  button.textContent="PATIENTEZ...";
-  status.textContent="Nouvelle génération possible dans 59 secondes.";
+  if(cooldownTimer){
+    clearInterval(cooldownTimer);
+    cooldownTimer=null;
+  }
 
-  if(cooldownTimer)clearInterval(cooldownTimer);
+  updateCooldownDisplay();
 
   cooldownTimer=setInterval(()=>{
     cooldown--;
 
-    status.textContent=cooldown>0
-      ?"Nouvelle génération possible dans "+cooldown+" secondes."
-      :"Vous pouvez générer une nouvelle prédiction.";
-
     if(cooldown<=0){
+      cooldown=0;
       clearInterval(cooldownTimer);
       cooldownTimer=null;
-      button.disabled=false;
-      button.textContent="GÉNÉRER UN SIGNAL";
     }
+
+    updateCooldownDisplay();
   },1000);
 }
 
 function generateMines(){
+  if(cooldown>0)return;
+
   const mineCount=Number(document.getElementById("mineCount").value);
   const cells=Array(25).fill("💎");
   let placed=0;
@@ -803,6 +742,8 @@ function generateMines(){
   setTimeout(()=>{
     heading.textContent="GRILLE DE SIMULATION TERMINÉE";
   },1800);
+
+  startCooldown();
 }
 
 function escapeHTML(value){
