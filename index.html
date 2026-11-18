@@ -3,106 +3,414 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EXTRA 1WIN</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#080d19;color:white;font-family:Arial,sans-serif;padding:20px}
-main{max-width:500px;margin:35px auto;background:#111b2e;padding:25px;border-radius:18px;border:1px solid #263b5c}
-h1{text-align:center;color:#20e6b5;font-size:30px}
-p{text-align:center;color:#b9c8dc}
-input,select,button{width:100%;padding:15px;margin-top:13px;border-radius:9px;font-size:16px}
-input,select{background:#081322;color:white;border:1px solid #38516f}
-button{background:#08c99c;color:#06131a;border:0;font-weight:bold}
-button:disabled{opacity:.5}
-.result{margin-top:15px;padding:12px;border-radius:8px;background:#081322;white-space:pre-wrap;overflow-wrap:anywhere}
-.note{font-size:12px;color:#9eacc0;line-height:1.5}
+:root {
+  --gold:#d8ad52;
+  --gold2:#f5d98c;
+  --bg:#080808;
+  --panel:#151515;
+  --muted:#aaa;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+header {
+  padding:20px 16px;
+  border-bottom:1px solid #392d18;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo {
+  color:var(--gold2);
+  font-weight:900;
+  font-size:23px;
+  letter-spacing:1px;
+}
+.logo span {color:white}
+button {
+  border:0;
+  cursor:pointer;
+  font-weight:bold;
+}
+.gold-button {
+  background:linear-gradient(135deg,#a87924,#f3d68b,#bd8b32);
+  color:#111;
+  padding:14px 20px;
+  border-radius:8px;
+}
+.outline-button {
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold2);
+  padding:11px 16px;
+  border-radius:7px;
+}
+main {max-width:1050px;margin:auto;padding:20px 15px}
+.hero {
+  border:1px solid #4a391d;
+  background:linear-gradient(135deg,#21190d,#101010 65%);
+  border-radius:15px;
+  padding:30px 20px;
+  text-align:center;
+  margin:15px 0 28px;
+}
+.hero .crown {font-size:42px}
+h1 {color:var(--gold2);font-size:32px;margin:10px 0}
+h2 {color:var(--gold2);font-size:22px}
+p {line-height:1.6;color:#ccc}
+.section-title {text-align:center;margin:30px 0 18px}
+.games {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:13px;
+}
+.game-card {
+  border:1px solid #49391e;
+  border-radius:12px;
+  padding:20px 12px;
+  text-align:center;
+  background:linear-gradient(145deg,#1a1a1a,#0d0d0d);
+  cursor:pointer;
+}
+.game-card:active {transform:scale(.98)}
+.game-icon {font-size:38px;margin-bottom:8px}
+.game-card h3 {color:var(--gold2);margin:8px 0}
+.game-card p {font-size:12px;margin:5px 0 12px}
+.page {display:none}
+.page.active {display:block}
+.panel {
+  background:var(--panel);
+  border:1px solid #49391e;
+  border-radius:12px;
+  padding:18px;
+  margin:15px 0;
+}
+label {display:block;color:var(--gold2);margin:13px 0 7px}
+input,select {
+  width:100%;
+  padding:13px;
+  border-radius:7px;
+  border:1px solid #555;
+  background:#090909;
+  color:#fff;
+}
+.full {width:100%;margin-top:15px}
+.result {
+  border:1px solid var(--gold);
+  background:#1b170e;
+  border-radius:10px;
+  padding:17px;
+  margin-top:15px;
+}
+.result strong {color:var(--gold2)}
+.big-number {
+  font-size:34px;
+  color:var(--gold2);
+  font-weight:900;
+  margin:12px 0;
+}
+.muted {font-size:12px;color:var(--muted)}
+.status {color:var(--gold2);font-size:13px;margin-top:10px}
+footer {
+  text-align:center;
+  padding:30px 12px;
+  color:#888;
+  border-top:1px solid #302515;
+  margin-top:35px;
+}
+.grid-mines {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px;
+  margin-top:15px;
+}
+.cell {
+  aspect-ratio:1;
+  border:1px solid #725724;
+  border-radius:7px;
+  background:#242018;
+  color:var(--gold2);
+  font-size:20px;
+}
+@media(max-width:400px) {
+  h1 {font-size:26px}
+  .game-card {padding:15px 7px}
+}
 </style>
 </head>
 <body>
+
+<header>
+  <div class="logo">♛ EXTRA <span>1WIN</span></div>
+  <button class="outline-button" onclick="showHome()">ACCUEIL</button>
+</header>
+
 <main>
-<h1>EXTRA 1WIN</h1>
-<p>Tableau d'analyse statistique indépendant</p>
+  <section id="homePage" class="page active">
+    <div class="hero">
+      <div class="crown">♛</div>
+      <h1>EXTRA 1WIN</h1>
+      <p>Votre espace d'analyse statistique et d'estimations de jeux.</p>
+      <p class="muted">Accédez à votre jeu et consultez les statistiques disponibles.</p>
+    </div>
 
-<label>Identifiant public 1win</label>
-<input id="pid" placeholder="Entre ton identifiant public">
+    <div class="section-title">
+      <h2>CHOISISSEZ VOTRE JEU</h2>
+      <p>Appuyez sur un jeu pour ouvrir son espace.</p>
+    </div>
 
-<label>Code promo</label>
-<input id="promo" value="EXTRAWIN5">
+    <div class="games">
+      <div class="game-card" onclick="openGame('crash')">
+        <div class="game-icon">🚀</div>
+        <h3>CRASH</h3>
+        <p>Analyse des résultats</p>
+        <button class="gold-button">OUVRIR</button>
+      </div>
+      <div class="game-card" onclick="openGame('lucky-jet')">
+        <div class="game-icon">✈️</div>
+        <h3>LUCKY JET</h3>
+        <p>Analyse des résultats</p>
+        <button class="gold-button">OUVRIR</button>
+      </div>
+      <div class="game-card" onclick="openGame('aviator')">
+        <div class="game-icon">🛩️</div>
+        <h3>AVIATOR</h3>
+        <p>Analyse des résultats</p>
+        <button class="gold-button">OUVRIR</button>
+      </div>
+      <div class="game-card" onclick="openGame('mines-classic')">
+        <div class="game-icon">💎</div>
+        <h3>MINES CLASSIC</h3>
+        <p>Grille de simulation séparée</p>
+        <button class="gold-button">OUVRIR</button>
+      </div>
+    </div>
 
-<button id="activate" onclick="register()">ACTIVER</button>
-<div id="regmsg" class="result">Entre ton identifiant et active ton accès.</div>
+    <div class="panel">
+      <h2>ACCÈS VIP</h2>
+      <label>Votre identifiant joueur</label>
+      <input id="publicId" placeholder="Entrez votre identifiant">
+      <label>Code promotionnel</label>
+      <input id="promoCode" placeholder="Entrez votre code promo">
+      <button class="gold-button full" onclick="registerPlayer()">ACTIVER MON ACCÈS</button>
+      <div id="registerMessage" class="status"></div>
+    </div>
+  </section>
 
-<hr style="border-color:#263b5c;margin:25px 0">
+  <section id="gamePage" class="page">
+    <button class="outline-button" onclick="showHome()">← RETOUR AUX JEUX</button>
+    <div class="hero">
+      <div class="crown">♛</div>
+      <h1 id="gameTitle">CRASH</h1>
+      <p id="gameDescription">Espace d'analyse statistique</p>
+    </div>
 
-<label>Choisir un jeu</label>
-<select id="game">
-<option value="crash">Crash</option>
-<option value="luckyjet">Lucky Jet</option>
-<option value="mines">Mines Classic</option>
-<option value="aviator">Aviator</option>
-</select>
+    <div id="normalGame" class="panel">
+      <h2>GÉNÉRATEUR DE SIGNAL</h2>
+      <p>Générez manuellement une analyse à partir des résultats historiques enregistrés.</p>
+      <button id="generateButton" class="gold-button full" onclick="generateSignal()">GÉNÉRER UN SIGNAL</button>
+      <div id="signalResult"></div>
+      <div id="cooldownStatus" class="status"></div>
+    </div>
 
-<button id="analyse" onclick="analyze()">ANALYSER L'HISTORIQUE REÇU</button>
-<div id="analysis" class="result">Les résultats d'analyse apparaîtront ici.</div>
-
-<p class="note">
-EXTRA 1WIN est un outil statistique indépendant. Les jeux de hasard restent aléatoires. Les statistiques ne garantissent aucun gain et ne prédisent pas les prochains résultats.
-</p>
+    <div id="minesGame" class="panel" style="display:none">
+      <h2>MINES CLASSIC</h2>
+      <p>Grille de simulation indépendante. Elle ne prédit pas les résultats réels du jeu.</p>
+      <label>Nombre de mines dans la simulation</label>
+      <select id="mineCount">
+        <option value="3">3 mines</option>
+        <option value="5" selected>5 mines</option>
+        <option value="7">7 mines</option>
+        <option value="10">10 mines</option>
+      </select>
+      <button class="gold-button full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
+      <div id="mineGrid" class="grid-mines"></div>
+      <p class="muted">Simulation aléatoire de cases, sans information sur le résultat réel.</p>
+    </div>
+  </section>
 </main>
 
+<footer>
+  <div class="logo">EXTRA 1WIN</div>
+  <p>Les statistiques ne garantissent aucun résultat futur.</p>
+</footer>
+
 <script>
-const API="https://curly-firefly-cb6a.sebastiendamour21.workers.dev";
+const API = "https://curly-firefly-cb6a.sebastiendamour21.workers.dev";
 
-async function request(path,data){
- const response=await fetch(API+path,{
-  method:"POST",
-  headers:{"Content-Type":"application/json"},
-  body:JSON.stringify(data)
- });
- const result=await response.json();
- if(!response.ok) throw new Error(result.error||result.message||"Erreur du serveur");
- return result;
+const gameNames = {
+  "crash":"CRASH",
+  "lucky-jet":"LUCKY JET",
+  "aviator":"AVIATOR",
+  "mines-classic":"MINES CLASSIC"
+};
+
+let currentGame = "crash";
+let cooldownTimer = null;
+let cooldown = 0;
+
+function showHome() {
+  document.getElementById("homePage").classList.add("active");
+  document.getElementById("gamePage").classList.remove("active");
 }
 
-async function register(){
- const id=document.getElementById("pid").value.trim();
- const promo=document.getElementById("promo").value.trim();
- const msg=document.getElementById("regmsg");
- const btn=document.getElementById("activate");
+function openGame(game) {
+  currentGame = game;
+  document.getElementById("homePage").classList.remove("active");
+  document.getElementById("gamePage").classList.add("active");
+  document.getElementById("gameTitle").textContent = gameNames[game];
+  document.getElementById("signalResult").innerHTML = "";
+  document.getElementById("cooldownStatus").textContent = "";
 
- if(!id||!promo){msg.textContent="Entre ton identifiant et ton code promo.";return;}
-
- btn.disabled=true;
- msg.textContent="Connexion au serveur...";
- try{
-  const data=await request("/api/register",{publicId:id,promoCode:promo});
-  msg.textContent=data.message||data.error||JSON.stringify(data);
- }catch(e){
-  msg.textContent="Erreur : "+e.message;
- }finally{
-  btn.disabled=false;
- }
+  const isMines = game === "mines-classic";
+  document.getElementById("normalGame").style.display = isMines ? "none" : "block";
+  document.getElementById("minesGame").style.display = isMines ? "block" : "none";
+  document.getElementById("gameDescription").textContent =
+    isMines ? "Générateur séparé de grille de simulation" : "Analyse statistique des résultats historiques";
 }
 
-async function analyze(){
- const id=document.getElementById("pid").value.trim();
- const game=document.getElementById("game").value;
- const msg=document.getElementById("analysis");
- const btn=document.getElementById("analyse");
+async function registerPlayer() {
+  const publicId = document.getElementById("publicId").value.trim();
+  const promoCode = document.getElementById("promoCode").value.trim();
+  const message = document.getElementById("registerMessage");
 
- if(!id){msg.textContent="Entre d'abord ton identifiant public.";return;}
+  if (!publicId || !promoCode) {
+    message.textContent = "Veuillez remplir les deux champs.";
+    return;
+  }
 
- btn.disabled=true;
- msg.textContent="Analyse en cours...";
- try{
-  const data=await request("/api/analyze",{publicId:id,game:game});
-  msg.textContent=JSON.stringify(data,null,2);
- }catch(e){
-  msg.textContent="Erreur : "+e.message;
- }finally{
-  btn.disabled=false;
- }
+  message.textContent = "Activation en cours...";
+
+  try {
+    const response = await fetch(API + "/api/register", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({publicId,promoCode})
+    });
+    const data = await response.json();
+    message.textContent = response.ok
+      ? (data.message || "Accès activé.")
+      : (data.error || "Impossible d'activer l'accès.");
+  } catch(error) {
+    message.textContent = "Erreur de connexion au serveur.";
+  }
+}
+
+async function generateSignal() {
+  const publicId = document.getElementById("publicId").value.trim();
+  const button = document.getElementById("generateButton");
+  const output = document.getElementById("signalResult");
+
+  if (!publicId) {
+    output.innerHTML = '<div class="result">Entrez d’abord votre identifiant sur la page d’accueil.</div>';
+    return;
+  }
+
+  if (cooldown > 0) return;
+
+  button.disabled = true;
+  button.textContent = "ANALYSE EN COURS...";
+  output.innerHTML = '<div class="result">Analyse de l’historique en cours...</div>';
+
+  try {
+    const response = await fetch(API + "/api/analyze", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({publicId,game:currentGame})
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+      output.innerHTML = '<div class="result">' + escapeHTML(data.error || "Analyse impossible.") + '</div>';
+      button.disabled = false;
+      button.textContent = "GÉNÉRER UN SIGNAL";
+      return;
+    }
+
+    if (!data.count || data.median === undefined) {
+      output.innerHTML = '<div class="result"><strong>HISTORIQUE INSUFFISANT</strong><p>' +
+        escapeHTML(data.message || "Aucun résultat numérique enregistré pour ce jeu.") +
+        '</p><p class="muted">Aucune estimation ne sera inventée.</p></div>';
+      button.disabled = false;
+      button.textContent = "GÉNÉRER UN SIGNAL";
+      return;
+    }
+
+    const generated = new Date();
+    const playTime = new Date(generated.getTime() + 2 * 60 * 1000);
+
+    output.innerHTML = `
+      <div class="result">
+        <strong>ANALYSE HISTORIQUE</strong>
+        <div class="big-number">${Number(data.median).toFixed(2)}x</div>
+        <p>Médiane des résultats enregistrés : <strong>${Number(data.median).toFixed(2)}x</strong></p>
+        <p>Nombre de résultats analysés : <strong>${Number(data.count)}</strong></p>
+        <p>Heure de génération : <strong>${generated.toLocaleTimeString("fr-FR")}</strong></p>
+        <p>Heure conseillée : <strong>${playTime.toLocaleTimeString("fr-FR")}</strong></p>
+        <p class="muted">Cette médiane décrit le passé. Elle ne prédit pas la prochaine cote et ne garantit aucun gain.</p>
+      </div>`;
+
+    startCooldown();
+  } catch(error) {
+    output.innerHTML = '<div class="result">Erreur de connexion. Réessayez plus tard.</div>';
+    button.disabled = false;
+    button.textContent = "GÉNÉRER UN SIGNAL";
+  }
+}
+
+function startCooldown() {
+  cooldown = 59;
+  const button = document.getElementById("generateButton");
+  const status = document.getElementById("cooldownStatus");
+  button.disabled = true;
+
+  if (cooldownTimer) clearInterval(cooldownTimer);
+
+  cooldownTimer = setInterval(() => {
+    cooldown--;
+    status.textContent = cooldown > 0
+      ? "Prochaine génération possible dans " + cooldown + " secondes."
+      : "Vous pouvez générer une nouvelle analyse.";
+    if (cooldown <= 0) {
+      clearInterval(cooldownTimer);
+      button.disabled = false;
+      button.textContent = "GÉNÉRER UN SIGNAL";
+    }
+  },1000);
+}
+
+function generateMines() {
+  const mineCount = Number(document.getElementById("mineCount").value);
+  const cells = Array(25).fill("💎");
+  let placed = 0;
+
+  while (placed < mineCount) {
+    const index = Math.floor(Math.random() * 25);
+    if (cells[index] !== "💣") {
+      cells[index] = "💣";
+      placed++;
+    }
+  }
+
+  document.getElementById("mineGrid").innerHTML =
+    cells.map(cell => '<div class="cell">' + cell + '</div>').join("");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
 }
 </script>
 </body>
