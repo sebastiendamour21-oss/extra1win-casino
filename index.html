@@ -3,413 +3,497 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EXTRA 1WIN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080604">
+<title>EXTRA 1WIN | VIP</title>
+
 <style>
 :root {
-  --gold:#d8ad52;
-  --gold2:#f5d98c;
-  --bg:#080808;
-  --panel:#151515;
-  --muted:#aaa;
+  --gold:#ffca36;
+  --gold2:#ffe9a0;
+  --dark:#080604;
+  --panel:#15100a;
 }
-* {box-sizing:border-box}
-body {
+*{box-sizing:border-box}
+body{
   margin:0;
-  background:var(--bg);
-  color:#fff;
+  background:
+    radial-gradient(ellipse at 50% 20%,#382008 0%,#100b06 45%,#050403 100%);
+  color:white;
   font-family:Arial,Helvetica,sans-serif;
 }
-header {
-  padding:20px 16px;
-  border-bottom:1px solid #392d18;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+button,input,select{font:inherit}
+button{cursor:pointer}
+header{
+  position:sticky;top:0;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 5%;
+  background:#080604ed;
+  border-bottom:2px solid #b67c12;
+  box-shadow:0 3px 20px #ffb00035;
 }
-.logo {
-  color:var(--gold2);
-  font-weight:900;
-  font-size:23px;
-  letter-spacing:1px;
+.logo{
+  font-size:25px;font-weight:1000;font-style:italic;
+  color:var(--gold);
+  text-shadow:0 0 14px #ffb000;
 }
-.logo span {color:white}
-button {
-  border:0;
-  cursor:pointer;
-  font-weight:bold;
+.logo span{color:white}
+.nav{display:flex;gap:12px;align-items:center}
+.nav button{
+  background:transparent;color:white;border:1px solid transparent;
+  padding:10px 14px;border-radius:8px;
 }
-.gold-button {
-  background:linear-gradient(135deg,#a87924,#f3d68b,#bd8b32);
-  color:#111;
-  padding:14px 20px;
-  border-radius:8px;
+.nav button:hover{border-color:var(--gold);color:var(--gold)}
+.gold{
+  background:linear-gradient(120deg,#a86600,#ffdc62,#d18b00);
+  color:#170d00;border:1px solid #fff0a8;
+  font-weight:900;border-radius:30px;
+  padding:13px 22px;
+  box-shadow:0 0 14px #ffb00075,inset 0 2px 3px #fff8;
 }
-.outline-button {
-  border:1px solid var(--gold);
-  background:transparent;
-  color:var(--gold2);
-  padding:11px 16px;
-  border-radius:7px;
+.gold:hover{filter:brightness(1.15);transform:translateY(-2px)}
+main{max-width:1250px;margin:auto;padding:15px}
+.hero{
+  position:relative;overflow:hidden;
+  min-height:340px;
+  border:2px solid #b98117;border-radius:16px;
+  background:
+    radial-gradient(ellipse at 15% 45%,#9a4a0c 0%,transparent 34%),
+    radial-gradient(ellipse at 85% 50%,#70400a 0%,transparent 35%),
+    linear-gradient(120deg,#130b05,#2b1907,#090604);
+  box-shadow:0 0 30px #e5a32345;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:35px 15px;
 }
-main {max-width:1050px;margin:auto;padding:20px 15px}
-.hero {
-  border:1px solid #4a391d;
-  background:linear-gradient(135deg,#21190d,#101010 65%);
-  border-radius:15px;
-  padding:30px 20px;
-  text-align:center;
-  margin:15px 0 28px;
+.hero:before,.hero:after{
+  content:"✦";position:absolute;color:#ffcf49;
+  font-size:60px;text-shadow:0 0 25px #ffae00;
 }
-.hero .crown {font-size:42px}
-h1 {color:var(--gold2);font-size:32px;margin:10px 0}
-h2 {color:var(--gold2);font-size:22px}
-p {line-height:1.6;color:#ccc}
-.section-title {text-align:center;margin:30px 0 18px}
-.games {
+.hero:before{top:20px;left:8%}
+.hero:after{bottom:20px;right:8%}
+.hero-content{position:relative;z-index:1}
+.crown{font-size:55px;filter:drop-shadow(0 0 12px #ffb000)}
+.hero h1{
+  font-size:clamp(42px,8vw,80px);
+  line-height:.95;margin:10px 0;
+  font-style:italic;font-weight:1000;
+  background:linear-gradient(#fff4b4,#ffc329,#a65c00);
+  -webkit-background-clip:text;color:transparent;
+  filter:drop-shadow(0 5px 2px #572d00);
+}
+.hero h2{color:#fff0a9;font-size:clamp(17px,3vw,27px)}
+.hero p{color:#eee;font-size:16px}
+.hero .tagline{
+  display:inline-block;background:linear-gradient(90deg,#a96b00,#ffdc6c,#a96b00);
+  color:#160d00;padding:10px 24px;
+  font-weight:1000;font-size:19px;
+  border-radius:25px;transform:skew(-5deg);
+}
+.ambassador{
+  font-size:75px;margin:10px;
+  filter:drop-shadow(0 0 15px #ffc13b);
+}
+.section-title{
+  text-align:center;color:var(--gold);
+  font-size:clamp(22px,4vw,34px);
+  font-style:italic;margin:25px 0 17px;
+  text-shadow:0 0 12px #ffb000;
+}
+.games{
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:13px;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
 }
-.game-card {
-  border:1px solid #49391e;
-  border-radius:12px;
-  padding:20px 12px;
-  text-align:center;
-  background:linear-gradient(145deg,#1a1a1a,#0d0d0d);
-  cursor:pointer;
+.game-card{
+  position:relative;overflow:hidden;
+  min-height:235px;padding:15px 10px;
+  text-align:center;border-radius:18px;
+  border:2px solid #d99b22;
+  background:
+    radial-gradient(ellipse at 50% 15%,#5740a2 0%,transparent 45%),
+    linear-gradient(155deg,#21162c,#090806 75%);
+  box-shadow:0 0 15px #ffb00045,inset 0 0 22px #ffcc3820;
+  transition:.25s;
 }
-.game-card:active {transform:scale(.98)}
-.game-icon {font-size:38px;margin-bottom:8px}
-.game-card h3 {color:var(--gold2);margin:8px 0}
-.game-card p {font-size:12px;margin:5px 0 12px}
-.page {display:none}
-.page.active {display:block}
-.panel {
-  background:var(--panel);
-  border:1px solid #49391e;
-  border-radius:12px;
-  padding:18px;
-  margin:15px 0;
+.game-card:nth-child(2){
+  background:radial-gradient(ellipse at 50% 15%,#5624a7,transparent 48%),#0b0714;
 }
-label {display:block;color:var(--gold2);margin:13px 0 7px}
-input,select {
-  width:100%;
-  padding:13px;
-  border-radius:7px;
-  border:1px solid #555;
-  background:#090909;
-  color:#fff;
+.game-card:nth-child(3){
+  background:radial-gradient(ellipse at 50% 15%,#1c5a9e,transparent 48%),#080b13;
 }
-.full {width:100%;margin-top:15px}
-.result {
-  border:1px solid var(--gold);
-  background:#1b170e;
-  border-radius:10px;
-  padding:17px;
-  margin-top:15px;
+.game-card:nth-child(4){
+  background:radial-gradient(ellipse at 50% 15%,#086b91,transparent 48%),#080b12;
 }
-.result strong {color:var(--gold2)}
-.big-number {
-  font-size:34px;
-  color:var(--gold2);
-  font-weight:900;
-  margin:12px 0;
+.game-card:hover{
+  transform:translateY(-7px) perspective(600px) rotateX(3deg);
+  box-shadow:0 0 30px #ffbd36a0;
 }
-.muted {font-size:12px;color:var(--muted)}
-.status {color:var(--gold2);font-size:13px;margin-top:10px}
-footer {
-  text-align:center;
-  padding:30px 12px;
-  color:#888;
-  border-top:1px solid #302515;
-  margin-top:35px;
+.art{
+  height:105px;display:flex;
+  align-items:center;justify-content:center;
+  font-size:76px;
+  filter:drop-shadow(0 10px 7px #000);
+  text-shadow:0 0 18px #ffbd36;
 }
-.grid-mines {
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:7px;
-  margin-top:15px;
+.game-card h3{
+  margin:7px 0;color:#ffcf4b;
+  font-size:25px;font-weight:1000;
+  font-style:italic;text-shadow:0 3px 3px #000;
 }
-.cell {
-  aspect-ratio:1;
-  border:1px solid #725724;
-  border-radius:7px;
-  background:#242018;
-  color:var(--gold2);
-  font-size:20px;
+.game-card p{font-size:13px;color:#eee;margin:5px}
+.game-card .gold{margin-top:10px;width:85%;padding:11px}
+.vip{
+  margin:25px 0 15px;padding:22px;
+  border:2px solid #e7ad36;border-radius:18px;
+  background:
+    radial-gradient(ellipse at 15% 50%,#6d410d66,transparent 45%),
+    linear-gradient(120deg,#100b05,#211506,#080604);
+  box-shadow:0 0 25px #ffb00055,inset 0 0 20px #ffca3620;
 }
-@media(max-width:400px) {
-  h1 {font-size:26px}
-  .game-card {padding:15px 7px}
+.vip h2{text-align:center;color:var(--gold);font-size:30px;margin:0 0 17px}
+.vip-form{
+  display:grid;grid-template-columns:1fr 1fr auto;
+  gap:12px;align-items:end;
+}
+label{display:block;color:#ffe29a;margin-bottom:7px;font-weight:bold}
+input{
+  width:100%;padding:14px;border-radius:8px;
+  border:1px solid #d79c2b;background:#080604;color:white;
+}
+.vip-note{text-align:center;color:#ffe18b;font-size:13px;margin:14px 0 0}
+.status{color:#ffe18b;margin-top:12px;font-size:14px}
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:10px;text-align:center;padding:18px 5px;
+  border-top:1px solid #926319;border-bottom:1px solid #926319;
+}
+.feature{font-weight:bold;font-size:13px}
+.feature span{display:block;font-size:27px;margin-bottom:5px}
+.page{display:none}
+.page.active{display:block}
+.panel{
+  background:#15100a;border:1px solid #a97924;
+  border-radius:15px;padding:20px;margin-top:18px;
+  box-shadow:0 0 20px #ffb00020;
+}
+.panel h2{color:var(--gold)}
+.full{width:100%;margin-top:15px}
+.result{
+  margin-top:16px;padding:17px;
+  border:1px solid #e5ae36;border-radius:12px;
+  background:#211707;
+}
+.big-number{font-size:38px;font-weight:1000;color:var(--gold)}
+.muted{font-size:12px;color:#bbb;line-height:1.6}
+.grid-mines{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:8px;margin-top:15px;
+}
+.cell{
+  aspect-ratio:1;border-radius:9px;
+  border:1px solid #d29b32;background:#292014;
+  color:var(--gold);font-size:24px;
+}
+footer{
+  text-align:center;padding:25px 10px;
+  color:#c9a65e;border-top:1px solid #8c621b;
+  margin-top:25px;
+}
+@media(max-width:750px){
+  header{padding:12px}
+  .nav button{padding:7px 5px;font-size:11px}
+  .logo{font-size:18px}
+  .games{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vip-form{grid-template-columns:1fr}
+  .features{grid-template-columns:repeat(2,1fr);row-gap:18px}
+  .hero{min-height:280px}
+}
+@media(max-width:360px){
+  .game-card h3{font-size:20px}
+  .art{font-size:60px}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="logo">♛ EXTRA <span>1WIN</span></div>
-  <button class="outline-button" onclick="showHome()">ACCUEIL</button>
+  <nav class="nav">
+    <button onclick="showHome()">⌂ Accueil</button>
+    <button onclick="showHome()">VIP</button>
+  </nav>
 </header>
 
 <main>
-  <section id="homePage" class="page active">
-    <div class="hero">
+<section id="homePage" class="page active">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="ambassador">👸🏽</div>
       <div class="crown">♛</div>
       <h1>EXTRA 1WIN</h1>
-      <p>Votre espace d'analyse statistique et d'estimations de jeux.</p>
-      <p class="muted">Accédez à votre jeu et consultez les statistiques disponibles.</p>
+      <div class="tagline">Votre partenaire de confiance !</div>
+      <h2>Analyse • Statistiques • Performance</h2>
+      <p>Jouez intelligemment, restez informé !</p>
     </div>
+  </div>
 
-    <div class="section-title">
-      <h2>CHOISISSEZ VOTRE JEU</h2>
-      <p>Appuyez sur un jeu pour ouvrir son espace.</p>
-    </div>
+  <h2 class="section-title">✦ CHOISISSEZ VOTRE JEU ✦</h2>
 
-    <div class="games">
-      <div class="game-card" onclick="openGame('crash')">
-        <div class="game-icon">🚀</div>
-        <h3>CRASH</h3>
-        <p>Analyse des résultats</p>
-        <button class="gold-button">OUVRIR</button>
-      </div>
-      <div class="game-card" onclick="openGame('lucky-jet')">
-        <div class="game-icon">✈️</div>
-        <h3>LUCKY JET</h3>
-        <p>Analyse des résultats</p>
-        <button class="gold-button">OUVRIR</button>
-      </div>
-      <div class="game-card" onclick="openGame('aviator')">
-        <div class="game-icon">🛩️</div>
-        <h3>AVIATOR</h3>
-        <p>Analyse des résultats</p>
-        <button class="gold-button">OUVRIR</button>
-      </div>
-      <div class="game-card" onclick="openGame('mines-classic')">
-        <div class="game-icon">💎</div>
-        <h3>MINES CLASSIC</h3>
-        <p>Grille de simulation séparée</p>
-        <button class="gold-button">OUVRIR</button>
-      </div>
-    </div>
+  <div class="games">
+    <article class="game-card" onclick="openGame('crash')">
+      <div class="art">🚀</div>
+      <h3>CRASH</h3>
+      <p>Analyse des résultats</p>
+      <button class="gold">JOUER ▶</button>
+    </article>
 
-    <div class="panel">
-      <h2>ACCÈS VIP</h2>
-      <label>Votre identifiant joueur</label>
-      <input id="publicId" placeholder="Entrez votre identifiant">
-      <label>Code promotionnel</label>
-      <input id="promoCode" placeholder="Entrez votre code promo">
-      <button class="gold-button full" onclick="registerPlayer()">ACTIVER MON ACCÈS</button>
-      <div id="registerMessage" class="status"></div>
+    <article class="game-card" onclick="openGame('lucky-jet')">
+      <div class="art">🦸🏽‍♂️</div>
+      <h3>LUCKY JET</h3>
+      <p>Analyse des résultats</p>
+      <button class="gold">JOUER ▶</button>
+    </article>
+
+    <article class="game-card" onclick="openGame('aviator')">
+      <div class="art">🛩️</div>
+      <h3>AVIATOR</h3>
+      <p>Analyse des résultats</p>
+      <button class="gold">JOUER ▶</button>
+    </article>
+
+    <article class="game-card" onclick="openGame('mines-classic')">
+      <div class="art">💎</div>
+      <h3>MINES CLASSIC</h3>
+      <p>Grille de simulation</p>
+      <button class="gold">JOUER ▶</button>
+    </article>
+  </div>
+
+  <section class="vip">
+    <h2>♛ ACCÈS VIP</h2>
+    <div class="vip-form">
+      <div>
+        <label for="publicId">Votre identifiant joueur</label>
+        <input id="publicId" placeholder="Votre identifiant">
+      </div>
+      <div>
+        <label for="promoCode">Code promotionnel</label>
+        <input id="promoCode" placeholder="Entrez votre code">
+      </div>
+      <button class="gold" onclick="registerPlayer()">✓ ACTIVER MON ACCÈS</button>
     </div>
+    <p class="vip-note">♛ Profitez de votre accès selon les conditions de votre code promo.</p>
+    <div id="registerMessage" class="status"></div>
   </section>
 
-  <section id="gamePage" class="page">
-    <button class="outline-button" onclick="showHome()">← RETOUR AUX JEUX</button>
-    <div class="hero">
-      <div class="crown">♛</div>
-      <h1 id="gameTitle">CRASH</h1>
-      <p id="gameDescription">Espace d'analyse statistique</p>
-    </div>
+  <div class="features">
+    <div class="feature"><span>⚡</span>Accès rapide</div>
+    <div class="feature"><span>🛡️</span>Sécurité</div>
+    <div class="feature"><span>🎧</span>Support</div>
+    <div class="feature"><span>🏆</span>Performance</div>
+  </div>
+</section>
 
-    <div id="normalGame" class="panel">
-      <h2>GÉNÉRATEUR DE SIGNAL</h2>
-      <p>Générez manuellement une analyse à partir des résultats historiques enregistrés.</p>
-      <button id="generateButton" class="gold-button full" onclick="generateSignal()">GÉNÉRER UN SIGNAL</button>
+<section id="gamePage" class="page">
+  <button class="gold" onclick="showHome()">← RETOUR</button>
+  <div class="panel">
+    <h2 id="gameTitle">CRASH</h2>
+    <p id="gameDescription">Analyse statistique</p>
+
+    <div id="normalGame">
+      <button id="generateButton" class="gold full" onclick="generateSignal()">
+        GÉNÉRER UN SIGNAL
+      </button>
       <div id="signalResult"></div>
       <div id="cooldownStatus" class="status"></div>
     </div>
 
-    <div id="minesGame" class="panel" style="display:none">
+    <div id="minesGame" style="display:none">
       <h2>MINES CLASSIC</h2>
-      <p>Grille de simulation indépendante. Elle ne prédit pas les résultats réels du jeu.</p>
-      <label>Nombre de mines dans la simulation</label>
+      <p>Simulation indépendante de grille. Elle ne prédit pas les cases du jeu réel.</p>
+      <label for="mineCount">Nombre de mines</label>
       <select id="mineCount">
         <option value="3">3 mines</option>
         <option value="5" selected>5 mines</option>
         <option value="7">7 mines</option>
         <option value="10">10 mines</option>
       </select>
-      <button class="gold-button full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
+      <button class="gold full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
       <div id="mineGrid" class="grid-mines"></div>
-      <p class="muted">Simulation aléatoire de cases, sans information sur le résultat réel.</p>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="logo">EXTRA 1WIN</div>
-  <p>Les statistiques ne garantissent aucun résultat futur.</p>
+  <div class="logo">♛ EXTRA 1WIN</div>
+  <p>Jouez aujourd'hui, gagnez demain !</p>
+  <p class="muted">Les résultats des jeux aléatoires ne peuvent pas être prédits avec certitude.</p>
 </footer>
 
 <script>
-const API = "https://curly-firefly-cb6a.sebastiendamour21.workers.dev";
+const API="https://curly-firefly-cb6a.sebastiendamour21.workers.dev";
 
-const gameNames = {
+const gameNames={
   "crash":"CRASH",
   "lucky-jet":"LUCKY JET",
   "aviator":"AVIATOR",
   "mines-classic":"MINES CLASSIC"
 };
 
-let currentGame = "crash";
-let cooldownTimer = null;
-let cooldown = 0;
+let currentGame="crash";
+let cooldown=0;
+let cooldownTimer=null;
 
-function showHome() {
+function showHome(){
   document.getElementById("homePage").classList.add("active");
   document.getElementById("gamePage").classList.remove("active");
 }
 
-function openGame(game) {
-  currentGame = game;
+function openGame(game){
+  currentGame=game;
   document.getElementById("homePage").classList.remove("active");
   document.getElementById("gamePage").classList.add("active");
-  document.getElementById("gameTitle").textContent = gameNames[game];
-  document.getElementById("signalResult").innerHTML = "";
-  document.getElementById("cooldownStatus").textContent = "";
+  document.getElementById("gameTitle").textContent=gameNames[game];
+  document.getElementById("signalResult").innerHTML="";
+  document.getElementById("cooldownStatus").textContent="";
 
-  const isMines = game === "mines-classic";
-  document.getElementById("normalGame").style.display = isMines ? "none" : "block";
-  document.getElementById("minesGame").style.display = isMines ? "block" : "none";
-  document.getElementById("gameDescription").textContent =
-    isMines ? "Générateur séparé de grille de simulation" : "Analyse statistique des résultats historiques";
+  const mines=game==="mines-classic";
+  document.getElementById("normalGame").style.display=mines?"none":"block";
+  document.getElementById("minesGame").style.display=mines?"block":"none";
 }
 
-async function registerPlayer() {
-  const publicId = document.getElementById("publicId").value.trim();
-  const promoCode = document.getElementById("promoCode").value.trim();
-  const message = document.getElementById("registerMessage");
+async function registerPlayer(){
+  const publicId=document.getElementById("publicId").value.trim();
+  const promoCode=document.getElementById("promoCode").value.trim();
+  const message=document.getElementById("registerMessage");
 
-  if (!publicId || !promoCode) {
-    message.textContent = "Veuillez remplir les deux champs.";
+  if(!publicId||!promoCode){
+    message.textContent="Veuillez remplir les deux champs.";
     return;
   }
 
-  message.textContent = "Activation en cours...";
+  message.textContent="Activation en cours...";
 
-  try {
-    const response = await fetch(API + "/api/register", {
+  try{
+    const response=await fetch(API+"/api/register",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({publicId,promoCode})
     });
-    const data = await response.json();
-    message.textContent = response.ok
-      ? (data.message || "Accès activé.")
-      : (data.error || "Impossible d'activer l'accès.");
-  } catch(error) {
-    message.textContent = "Erreur de connexion au serveur.";
+    const data=await response.json();
+    message.textContent=response.ok
+      ?(data.message||"Accès activé.")
+      :(data.error||"Activation impossible.");
+  }catch(error){
+    message.textContent="Erreur de connexion au serveur.";
   }
 }
 
-async function generateSignal() {
-  const publicId = document.getElementById("publicId").value.trim();
-  const button = document.getElementById("generateButton");
-  const output = document.getElementById("signalResult");
+async function generateSignal(){
+  const publicId=document.getElementById("publicId").value.trim();
+  const button=document.getElementById("generateButton");
+  const output=document.getElementById("signalResult");
 
-  if (!publicId) {
-    output.innerHTML = '<div class="result">Entrez d’abord votre identifiant sur la page d’accueil.</div>';
+  if(!publicId){
+    output.innerHTML='<div class="result">Entrez votre identifiant sur la page d’accueil.</div>';
     return;
   }
+  if(cooldown>0)return;
 
-  if (cooldown > 0) return;
+  button.disabled=true;
+  button.textContent="ANALYSE EN COURS...";
+  output.innerHTML='<div class="result">Analyse de l’historique...</div>';
 
-  button.disabled = true;
-  button.textContent = "ANALYSE EN COURS...";
-  output.innerHTML = '<div class="result">Analyse de l’historique en cours...</div>';
-
-  try {
-    const response = await fetch(API + "/api/analyze", {
+  try{
+    const response=await fetch(API+"/api/analyze",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({publicId,game:currentGame})
     });
-    const data = await response.json();
 
-    if (!response.ok) {
-      output.innerHTML = '<div class="result">' + escapeHTML(data.error || "Analyse impossible.") + '</div>';
-      button.disabled = false;
-      button.textContent = "GÉNÉRER UN SIGNAL";
+    const data=await response.json();
+
+    if(!response.ok){
+      output.innerHTML='<div class="result">'+escapeHTML(data.error||"Analyse impossible.")+'</div>';
+      button.disabled=false;
+      button.textContent="GÉNÉRER UN SIGNAL";
       return;
     }
 
-    if (!data.count || data.median === undefined) {
-      output.innerHTML = '<div class="result"><strong>HISTORIQUE INSUFFISANT</strong><p>' +
-        escapeHTML(data.message || "Aucun résultat numérique enregistré pour ce jeu.") +
+    if(!data.count||data.median===undefined){
+      output.innerHTML='<div class="result"><strong>HISTORIQUE INSUFFISANT</strong><p>'+
+        escapeHTML(data.message||"Aucun résultat numérique enregistré.")+
         '</p><p class="muted">Aucune estimation ne sera inventée.</p></div>';
-      button.disabled = false;
-      button.textContent = "GÉNÉRER UN SIGNAL";
+      button.disabled=false;
+      button.textContent="GÉNÉRER UN SIGNAL";
       return;
     }
 
-    const generated = new Date();
-    const playTime = new Date(generated.getTime() + 2 * 60 * 1000);
+    const generated=new Date();
+    const playTime=new Date(generated.getTime()+120000);
 
-    output.innerHTML = `
+    output.innerHTML=`
       <div class="result">
         <strong>ANALYSE HISTORIQUE</strong>
         <div class="big-number">${Number(data.median).toFixed(2)}x</div>
-        <p>Médiane des résultats enregistrés : <strong>${Number(data.median).toFixed(2)}x</strong></p>
-        <p>Nombre de résultats analysés : <strong>${Number(data.count)}</strong></p>
-        <p>Heure de génération : <strong>${generated.toLocaleTimeString("fr-FR")}</strong></p>
+        <p>Médiane historique : <strong>${Number(data.median).toFixed(2)}x</strong></p>
+        <p>Résultats analysés : <strong>${Number(data.count)}</strong></p>
+        <p>Génération : <strong>${generated.toLocaleTimeString("fr-FR")}</strong></p>
         <p>Heure conseillée : <strong>${playTime.toLocaleTimeString("fr-FR")}</strong></p>
-        <p class="muted">Cette médiane décrit le passé. Elle ne prédit pas la prochaine cote et ne garantit aucun gain.</p>
+        <p class="muted">Cette statistique décrit les résultats passés. Elle ne prédit pas la prochaine cote.</p>
       </div>`;
 
     startCooldown();
-  } catch(error) {
-    output.innerHTML = '<div class="result">Erreur de connexion. Réessayez plus tard.</div>';
-    button.disabled = false;
-    button.textContent = "GÉNÉRER UN SIGNAL";
+  }catch(error){
+    output.innerHTML='<div class="result">Erreur de connexion au serveur.</div>';
+    button.disabled=false;
+    button.textContent="GÉNÉRER UN SIGNAL";
   }
 }
 
-function startCooldown() {
-  cooldown = 59;
-  const button = document.getElementById("generateButton");
-  const status = document.getElementById("cooldownStatus");
-  button.disabled = true;
+function startCooldown(){
+  cooldown=59;
+  const button=document.getElementById("generateButton");
+  const status=document.getElementById("cooldownStatus");
+  button.disabled=true;
 
-  if (cooldownTimer) clearInterval(cooldownTimer);
+  if(cooldownTimer)clearInterval(cooldownTimer);
 
-  cooldownTimer = setInterval(() => {
+  cooldownTimer=setInterval(()=>{
     cooldown--;
-    status.textContent = cooldown > 0
-      ? "Prochaine génération possible dans " + cooldown + " secondes."
-      : "Vous pouvez générer une nouvelle analyse.";
-    if (cooldown <= 0) {
+    status.textContent=cooldown>0
+      ?"Nouvelle génération possible dans "+cooldown+" secondes."
+      :"Vous pouvez générer une nouvelle analyse.";
+
+    if(cooldown<=0){
       clearInterval(cooldownTimer);
-      button.disabled = false;
-      button.textContent = "GÉNÉRER UN SIGNAL";
+      button.disabled=false;
+      button.textContent="GÉNÉRER UN SIGNAL";
     }
   },1000);
 }
 
-function generateMines() {
-  const mineCount = Number(document.getElementById("mineCount").value);
-  const cells = Array(25).fill("💎");
-  let placed = 0;
+function generateMines(){
+  const mineCount=Number(document.getElementById("mineCount").value);
+  const cells=Array(25).fill("💎");
+  let placed=0;
 
-  while (placed < mineCount) {
-    const index = Math.floor(Math.random() * 25);
-    if (cells[index] !== "💣") {
-      cells[index] = "💣";
+  while(placed<mineCount){
+    const index=Math.floor(Math.random()*25);
+    if(cells[index]!=="💣"){
+      cells[index]="💣";
       placed++;
     }
   }
 
-  document.getElementById("mineGrid").innerHTML =
-    cells.map(cell => '<div class="cell">' + cell + '</div>').join("");
+  document.getElementById("mineGrid").innerHTML=
+    cells.map(cell=>'<div class="cell">'+cell+'</div>').join("");
 }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#039;"
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   })[char]);
 }
 </script>
