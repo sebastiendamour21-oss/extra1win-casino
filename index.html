@@ -151,11 +151,200 @@ input,select{
 }
 .big-number{font-size:38px;font-weight:1000;color:var(--gold)}
 .muted{font-size:12px;color:#bbb;line-height:1.6}
-.grid-mines{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:15px}
+
+/* ESPACE ANIME DES TROIS JEUX */
+.flight-scene{
+  position:relative;
+  height:270px;
+  margin:18px 0;
+  overflow:hidden;
+  border:1px solid #a87927;
+  border-radius:16px;
+  background:
+    radial-gradient(ellipse at 50% 90%,#16446c88,transparent 55%),
+    linear-gradient(180deg,#050b20,#10274a 55%,#080b16);
+  box-shadow:inset 0 0 35px #000,0 0 18px #e4a72c33;
+}
+.flight-scene.lucky{
+  background:
+    radial-gradient(ellipse at 50% 90%,#7220bb88,transparent 55%),
+    linear-gradient(180deg,#10051f,#32115b 55%,#090615);
+}
+.flight-scene.aviator{
+  background:
+    radial-gradient(ellipse at 50% 90%,#1768a088,transparent 55%),
+    linear-gradient(180deg,#030c1d,#123d69 55%,#080b16);
+}
+.scene-stars{
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent),
+    radial-gradient(2px 2px at 35% 60%,#fff,transparent),
+    radial-gradient(2px 2px at 70% 18%,#fff,transparent),
+    radial-gradient(2px 2px at 90% 55%,#fff,transparent),
+    radial-gradient(2px 2px at 55% 35%,#fff,transparent);
+  background-size:180px 130px;
+  animation:starsMove 8s linear infinite;
+}
+@keyframes starsMove{
+  from{background-position:0 0}
+  to{background-position:180px 130px}
+}
+.scene-cloud{
+  position:absolute;
+  width:130px;height:35px;
+  background:#b5c9e5;
+  opacity:.13;border-radius:50%;
+  filter:blur(12px);
+  animation:cloudMove 9s linear infinite;
+}
+.scene-cloud.one{top:65px;left:-150px}
+.scene-cloud.two{top:165px;left:-180px;animation-delay:3s}
+@keyframes cloudMove{
+  from{transform:translateX(0)}
+  to{transform:translateX(650px)}
+}
+.flight-track{
+  position:absolute;
+  width:120%;height:3px;
+  left:-10%;top:70%;
+  transform:rotate(-17deg);
+  background:linear-gradient(90deg,transparent,#ffcf49,#fff,transparent);
+  opacity:.45;
+  box-shadow:0 0 12px #ffc93b;
+}
+.flight-object{
+  position:absolute;
+  left:8%;top:57%;
+  font-size:65px;
+  z-index:3;
+  filter:drop-shadow(0 0 13px #ffc43c);
+  transform:rotate(-15deg);
+}
+.flight-scene.lucky .flight-object{
+  font-size:58px;
+  transform:rotate(-40deg);
+}
+.flight-scene.aviator .flight-object{
+  font-size:65px;
+  transform:rotate(-12deg);
+}
+.flight-object.fly{
+  animation:flightPath 6s cubic-bezier(.2,.5,.3,1) forwards;
+}
+@keyframes flightPath{
+  0%{left:7%;top:65%;transform:rotate(-12deg) scale(.8)}
+  35%{left:35%;top:43%;transform:rotate(-20deg) scale(1)}
+  70%{left:65%;top:24%;transform:rotate(-18deg) scale(1.08)}
+  100%{left:85%;top:8%;transform:rotate(-22deg) scale(1.12)}
+}
+.flight-scene.lucky .flight-object.fly{
+  animation:rocketPath 6s cubic-bezier(.2,.5,.3,1) forwards;
+}
+@keyframes rocketPath{
+  0%{left:8%;top:70%;transform:rotate(-45deg) scale(.8)}
+  35%{left:35%;top:48%;transform:rotate(-45deg) scale(1)}
+  70%{left:65%;top:24%;transform:rotate(-45deg) scale(1.1)}
+  100%{left:85%;top:5%;transform:rotate(-45deg) scale(1.15)}
+}
+.flight-trail{
+  position:absolute;
+  width:95px;height:5px;
+  left:0;top:0;
+  border-radius:50%;
+  background:linear-gradient(90deg,transparent,#ff9b26,#fff1a5);
+  filter:blur(3px);
+  opacity:0;
+}
+.flight-object.fly .flight-trail{
+  opacity:1;
+  animation:trailPulse .3s infinite alternate;
+}
+@keyframes trailPulse{
+  from{filter:blur(2px);opacity:.55}
+  to{filter:blur(7px);opacity:1}
+}
+.scene-multiplier{
+  position:absolute;
+  top:17px;left:0;right:0;
+  text-align:center;
+  color:#ffe18a;
+  font-size:35px;font-weight:1000;
+  text-shadow:0 0 15px #ffad22;
+  z-index:4;
+}
+.scene-caption{
+  position:absolute;
+  bottom:12px;left:0;right:0;
+  text-align:center;
+  color:#d9e8ff;
+  font-size:12px;
+  letter-spacing:2px;
+  z-index:4;
+}
+.scene-explosion{
+  position:absolute;
+  width:25px;height:25px;
+  right:9%;top:8%;
+  border-radius:50%;
+  background:#ffbd35;
+  opacity:0;
+  z-index:5;
+  box-shadow:0 0 20px 15px #ff6b18;
+}
+.scene-explosion.burst{
+  animation:explosion .7s ease-out forwards;
+}
+@keyframes explosion{
+  0%{opacity:1;transform:scale(.2)}
+  60%{opacity:1;transform:scale(3)}
+  100%{opacity:0;transform:scale(5)}
+}
+.animation-note{
+  color:#d6c49c;
+  text-align:center;
+  font-size:12px;
+  margin:8px 0 15px;
+}
+
+/* MINES ANIMEES */
+.grid-mines{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;margin-top:15px;
+}
 .cell{
-  aspect-ratio:1;border-radius:9px;border:1px solid #d29b32;
-  background:#292014;color:var(--gold);font-size:24px;
+  aspect-ratio:1;border-radius:9px;
+  border:1px solid #d29b32;
+  background:linear-gradient(145deg,#302518,#120d08);
+  color:var(--gold);font-size:24px;
   display:flex;justify-content:center;align-items:center;
+  box-shadow:inset 0 0 12px #000;
+  opacity:0;
+  transform:scale(.6) rotateY(90deg);
+  animation:cellReveal .45s ease forwards;
+  animation-delay:var(--delay,0s);
+}
+@keyframes cellReveal{
+  to{opacity:1;transform:scale(1) rotateY(0)}
+}
+.cell.diamond{
+  background:radial-gradient(circle,#286d54,#102a21);
+  box-shadow:0 0 14px #31ff9a55,inset 0 0 12px #000;
+  animation:cellReveal .45s ease forwards,diamondGlow 1.4s ease-in-out infinite alternate;
+  animation-delay:var(--delay,0s),calc(var(--delay,0s) + .5s);
+}
+@keyframes diamondGlow{
+  from{filter:brightness(.85)}
+  to{filter:brightness(1.45);box-shadow:0 0 18px #31ff9a99}
+}
+.cell.mine{
+  background:radial-gradient(circle,#77251a,#2a0c08);
+  box-shadow:0 0 15px #ff352b66;
+}
+.mine-heading{
+  text-align:center;color:#ffe18b;
+  font-weight:bold;margin:12px 0;
 }
 .whatsapp-contact{
   position:fixed;right:15px;bottom:18px;z-index:9999;
@@ -174,11 +363,19 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
   .vip-form{grid-template-columns:1fr}
   .features{grid-template-columns:repeat(2,1fr);row-gap:18px}
   .hero{min-height:280px}
+  .flight-scene{height:235px}
 }
 @media(max-width:360px){
   .game-card h3{font-size:20px}
   .art img{height:100px}
   .whatsapp-contact{padding:10px 12px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
@@ -264,6 +461,24 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
     <p id="gameDescription">Estimation expérimentale</p>
 
     <div id="normalGame">
+      <div id="flightScene" class="flight-scene">
+        <div class="scene-stars"></div>
+        <div class="scene-cloud one"></div>
+        <div class="scene-cloud two"></div>
+        <div class="flight-track"></div>
+        <div id="visualMultiplier" class="scene-multiplier">1.00x</div>
+        <div id="flightObject" class="flight-object">
+          ✈️
+          <span class="flight-trail"></span>
+        </div>
+        <div id="sceneExplosion" class="scene-explosion"></div>
+        <div id="sceneCaption" class="scene-caption">PRÊT AU DÉCOLLAGE</div>
+      </div>
+
+      <p class="animation-note">
+        Animation visuelle simulée — indépendante des résultats réels.
+      </p>
+
       <button id="generateButton" class="gold full" onclick="generateSignal()">GÉNÉRER UN SIGNAL</button>
       <div id="signalResult" aria-live="polite"></div>
       <div id="cooldownStatus" class="status"></div>
@@ -280,6 +495,7 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
         <option value="10">10 mines</option>
       </select>
       <button class="gold full" onclick="generateMines()">GÉNÉRER LA GRILLE</button>
+      <div id="mineHeading" class="mine-heading"></div>
       <div id="mineGrid" class="grid-mines"></div>
     </div>
   </div>
@@ -309,6 +525,8 @@ const gameNames={
 let currentGame="crash";
 let cooldown=0;
 let cooldownTimer=null;
+let flightTimer=null;
+let flightInterval=null;
 
 function showHome(){
   document.getElementById("homePage").classList.add("active");
@@ -328,6 +546,80 @@ function openGame(game){
   const mines=game==="mines-classic";
   document.getElementById("normalGame").style.display=mines?"none":"block";
   document.getElementById("minesGame").style.display=mines?"block":"none";
+
+  resetFlightScene(game);
+}
+
+function resetFlightScene(game){
+  stopFlightAnimation();
+
+  const scene=document.getElementById("flightScene");
+  const object=document.getElementById("flightObject");
+  const explosion=document.getElementById("sceneExplosion");
+  const multiplier=document.getElementById("visualMultiplier");
+  const caption=document.getElementById("sceneCaption");
+
+  scene.className="flight-scene";
+  if(game==="lucky-jet")scene.classList.add("lucky");
+  if(game==="aviator")scene.classList.add("aviator");
+
+  object.classList.remove("fly");
+  explosion.classList.remove("burst");
+
+  if(game==="lucky-jet"){
+    object.innerHTML='🚀<span class="flight-trail"></span>';
+  }else if(game==="aviator"){
+    object.innerHTML='🛩️<span class="flight-trail"></span>';
+  }else{
+    object.innerHTML='✈️<span class="flight-trail"></span>';
+  }
+
+  multiplier.textContent="1.00x";
+  caption.textContent="PRÊT AU DÉCOLLAGE";
+}
+
+function stopFlightAnimation(){
+  if(flightTimer){
+    clearTimeout(flightTimer);
+    flightTimer=null;
+  }
+  if(flightInterval){
+    clearInterval(flightInterval);
+    flightInterval=null;
+  }
+}
+
+function startFlightAnimation(){
+  stopFlightAnimation();
+
+  const object=document.getElementById("flightObject");
+  const explosion=document.getElementById("sceneExplosion");
+  const multiplier=document.getElementById("visualMultiplier");
+  const caption=document.getElementById("sceneCaption");
+
+  object.classList.remove("fly");
+  explosion.classList.remove("burst");
+  void object.offsetWidth;
+
+  object.classList.add("fly");
+  caption.textContent="ANIMATION EN COURS";
+
+  const start=Date.now();
+  const duration=6000;
+
+  flightInterval=setInterval(()=>{
+    const progress=Math.min((Date.now()-start)/duration,1);
+    const visualValue=1+(progress*2.5);
+    multiplier.textContent=visualValue.toFixed(2)+"x";
+
+    if(progress>=1){
+      clearInterval(flightInterval);
+      flightInterval=null;
+      multiplier.textContent="3.50x";
+      caption.textContent="FIN DE LA SIMULATION";
+      explosion.classList.add("burst");
+    }
+  },100);
 }
 
 async function registerPlayer(){
@@ -425,6 +717,7 @@ async function generateSignal(){
           </p>
         </div>`;
 
+      startFlightAnimation();
       startCooldown();
       return;
     }
@@ -481,8 +774,19 @@ function generateMines(){
     }
   }
 
-  document.getElementById("mineGrid").innerHTML=
-    cells.map(cell=>'<div class="cell">'+cell+'</div>').join("");
+  const grid=document.getElementById("mineGrid");
+  const heading=document.getElementById("mineHeading");
+
+  heading.textContent="OUVERTURE DES CASES...";
+  grid.innerHTML=cells.map((cell,index)=>{
+    const delay=(index*0.055).toFixed(2);
+    const type=cell==="💣"?"mine":"diamond";
+    return '<div class="cell '+type+'" style="--delay:'+delay+'s">'+cell+'</div>';
+  }).join("");
+
+  setTimeout(()=>{
+    heading.textContent="GRILLE DE SIMULATION TERMINÉE";
+  },1800);
 }
 
 function escapeHTML(value){
