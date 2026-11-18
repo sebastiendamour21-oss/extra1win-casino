@@ -151,6 +151,19 @@ input,select{
 }
 .big-number{font-size:38px;font-weight:1000;color:var(--gold)}
 .muted{font-size:12px;color:#bbb;line-height:1.6}
+.predictor{
+  color:#ffe18a;
+  font-size:17px;
+  font-weight:1000;
+  margin:12px 0;
+  text-shadow:0 0 10px #ffb00080;
+}
+.motivation{
+  color:#fff0bd;
+  font-size:14px;
+  line-height:1.6;
+  margin-top:12px;
+}
 
 /* ESPACE ANIME DES TROIS JEUX */
 .flight-scene{
@@ -409,17 +422,17 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
   <div class="games">
     <article class="game-card" onclick="openGame('crash')">
       <div class="art"><img src="crash.jpg" alt="CRASH"></div>
-      <h3>CRASH</h3><p>Estimation expérimentale</p>
+      <h3>CRASH</h3><p>Prédiction</p>
       <button class="gold">JOUER ▶</button>
     </article>
     <article class="game-card" onclick="openGame('lucky-jet')">
       <div class="art"><img src="lucky-jet.jpg" alt="LUCKY JET"></div>
-      <h3>LUCKY JET</h3><p>Estimation expérimentale</p>
+      <h3>LUCKY JET</h3><p>Prédiction</p>
       <button class="gold">JOUER ▶</button>
     </article>
     <article class="game-card" onclick="openGame('aviator')">
       <div class="art"><img src="aviator.jpg" alt="AVIATOR"></div>
-      <h3>AVIATOR</h3><p>Estimation expérimentale</p>
+      <h3>AVIATOR</h3><p>Prédiction</p>
       <button class="gold">JOUER ▶</button>
     </article>
     <article class="game-card" onclick="openGame('mines-classic')">
@@ -458,7 +471,7 @@ footer{text-align:center;padding:25px 10px;color:#c9a65e;border-top:1px solid #8
   <button class="gold" onclick="showHome()">← RETOUR</button>
   <div class="panel">
     <h2 id="gameTitle">CRASH</h2>
-    <p id="gameDescription">Estimation expérimentale</p>
+    <p id="gameDescription">Prédiction</p>
 
     <div id="normalGame">
       <div id="flightScene" class="flight-scene">
@@ -540,6 +553,8 @@ function openGame(game){
   document.getElementById("homePage").classList.remove("active");
   document.getElementById("gamePage").classList.add("active");
   document.getElementById("gameTitle").textContent=gameNames[game];
+  document.getElementById("gameDescription").textContent=
+    game==="mines-classic"?"Grille de simulation":"Prédiction";
   document.getElementById("signalResult").innerHTML="";
   document.getElementById("cooldownStatus").textContent="";
 
@@ -671,7 +686,7 @@ async function generateSignal(){
 
   button.disabled=true;
   button.textContent="GÉNÉRATION EN COURS...";
-  output.innerHTML='<div class="result">Préparation de votre estimation expérimentale...</div>';
+  output.innerHTML='<div class="result">Préparation de votre prédiction...</div>';
 
   try{
     const response=await fetch(API+"/api/analyze",{
@@ -702,18 +717,19 @@ async function generateSignal(){
 
       output.innerHTML=`
         <div class="result">
-          <strong>ESTIMATION EXPÉRIMENTALE</strong>
+          <strong>PRÉDICTION</strong>
           <div class="big-number">${Number(data.estimatedCote).toFixed(2)}x</div>
+          <div class="predictor">PRÉDICTEUR : 80 % (SIMULATION)</div>
           <p>Génération :
             <strong>${generated.toLocaleTimeString("fr-FR")}</strong>
           </p>
           <p>Heure conseillée :
             <strong>${playTime.toLocaleTimeString("fr-FR")}</strong>
           </p>
-          <p class="muted">${escapeHTML(data.note||"Estimation simulée.")}</p>
-          <p class="muted">
-            Cette valeur est générée aléatoirement. Elle ne prédit pas
-            le résultat réel et ne garantit aucun gain.
+          <p class="muted">${escapeHTML(data.note||"Prédiction simulée.")}</p>
+          <p class="motivation">
+            Garde confiance, joue avec discipline et profite de chaque opportunité.
+            La patience et la maîtrise sont tes meilleures alliées !
           </p>
         </div>`;
 
@@ -750,7 +766,7 @@ function startCooldown(){
 
     status.textContent=cooldown>0
       ?"Nouvelle génération possible dans "+cooldown+" secondes."
-      :"Vous pouvez générer une nouvelle estimation.";
+      :"Vous pouvez générer une nouvelle prédiction.";
 
     if(cooldown<=0){
       clearInterval(cooldownTimer);
