@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "extra1win-v2";
+const CACHE_NAME = "extra1win-v3";
 
 const FILES_TO_CACHE = [
   "/",
