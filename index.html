@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -252,6 +251,20 @@ input,select {
   margin:14px 0 0;
 }
 .status { color:#ffe18b; margin-top:12px; font-size:14px; }
+
+/* MESSAGE DE CONNEXION */
+.connection-success {
+  color:#62ff9b;
+  font-weight:900;
+  padding:12px;
+  margin-top:14px;
+  border:1px solid #28d878;
+  border-radius:9px;
+  background:#092817;
+  text-align:center;
+  box-shadow:0 0 14px #20d87835;
+}
+
 .features {
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -306,7 +319,7 @@ input,select {
 .muted { font-size:12px; color:#bbb; line-height:1.6; }
 .predictor {
   color:#ffe18a;
-  font-size:15px;
+  font-size:20px;
   font-weight:1000;
   margin:12px 0;
   text-shadow:0 0 10px #ffb00080;
@@ -839,11 +852,15 @@ async function readResponse(response) {
   }
 }
 
+/* ACTIVATION VIP ET MESSAGE DE CONNEXION */
+
 async function registerPlayer() {
   const publicId = element("publicId").value.trim();
   const promoCode = element("promoCode").value.trim();
   const message = element("registerMessage");
   const button = element("registerButton");
+
+  message.classList.remove("connection-success");
 
   if (!publicId || !promoCode) {
     message.textContent = "Veuillez remplir les deux champs.";
@@ -866,7 +883,10 @@ async function registerPlayer() {
       throw new Error(data.error || "Activation impossible.");
     }
 
-    message.textContent = data.message || "Inscription réussie.";
+    message.textContent =
+      "✓ CONNECTÉ AVEC SUCCÈS — Votre accès EXTRA 1WIN est actif.";
+
+    message.classList.add("connection-success");
 
   } catch (error) {
     message.textContent =
@@ -919,35 +939,38 @@ async function generateSignal() {
     }
 
     const cote = Number(data.estimatedCote);
+    const score = Number(data.analysisScore);
     const playTime = new Date(data.playAt);
 
     if (!Number.isFinite(cote) || cote <= 0) {
       throw new Error("Cote reçue invalide.");
     }
 
-    if (!Number.isFinite(playTime.getTime())) {
-      throw new Error("Heure de jeu invalide.");
+    if (!Number.isFinite(score) || score < 0 || score > 100) {
+      throw new Error("Score d'analyse absent ou invalide. Vérifiez le Worker.");
     }
 
-    let risk = "MOYEN";
-
-    if (data.riskLevel === "low") {
-      risk = "FAIBLE";
-    } else if (data.riskLevel === "high") {
-      risk = "ÉLEVÉ";
+    if (!Number.isFinite(playTime.getTime())) {
+      throw new Error("Heure de jeu invalide.");
     }
 
     output.innerHTML = `
       <div class="result">
         <strong>ANALYSE EXPÉRIMENTALE</strong>
         <div class="big-number">${cote.toFixed(2)}x</div>
-        <div class="predictor">NIVEAU DE RISQUE : ${risk}</div>
+
+        <div class="predictor">
+          SCORE D'ANALYSE : ${Math.round(score)}%
+        </div>
+
         <p>Heure conseillée :
           <strong>${playTime.toLocaleTimeString("fr-FR")}</strong>
         </p>
+
         <p class="muted">
-          Estimation issue de l'analyse des données disponibles.
-          Elle ne garantit pas le résultat du prochain tour.
+          Score expérimental calculé par le système.
+          Il ne représente pas une probabilité réelle de gain
+          et ne garantit pas le résultat du prochain tour.
         </p>
       </div>
     `;
@@ -1135,4 +1158,4 @@ function escapeHTML(value) {
 
 </script>
 </body>
-</html>
+  </html>
