@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080604">
+<link rel="manifest" href="/manifest.json">
 <title>EXTRA 1WIN | VIP</title>
 
 <style>
@@ -1168,15 +1169,6 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
-<link rel="manifest" href="/manifest.json">
 
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js")
-      .catch(error => console.error("Erreur PWA :", error));
-  });
-}
-</script>
 </body>
 </html>
