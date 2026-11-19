@@ -1,0 +1,24 @@
+
+{
+  "name": "EXTRA 1WIN",
+  "short_name": "EXTRA 1WIN",
+  "description": "Application officielle EXTRA 1WIN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#080604",
+  "theme_color": "#080604",
+  "icons": [
+    {
+      "src": "/ambassadrice.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/ambassadrice.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
